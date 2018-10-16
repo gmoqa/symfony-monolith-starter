@@ -9,13 +9,15 @@
         "symfony/console": "*",
         "symfony/flex": "^1.1",
         "symfony/framework-bundle": "*",
-        "symfony/maker-bundle": "^1.7",
-        "symfony/profiler-pack": "^1.0",
-        "symfony/web-server-bundle": "*",
+        "symfony/orm-pack": "^1.0",
+        "symfony/security-bundle": "*",
         "symfony/yaml": "*"
     },
     "require-dev": {
         "sensiolabs/security-checker": "^5.0",
+        "symfony/profiler-pack": "^1.0",
+        "symfony/web-server-bundle": "*",
+        "symfony/maker-bundle": "^1.7",
         "symfony/dotenv": "*"
     },
     "config": {
