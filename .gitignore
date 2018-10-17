@@ -1,6 +1,7 @@
 ###> symfony/framework-bundle ###
 /.env
 .idea/*
+.php_cs.cache
 /public/bundles/
 /var/
 /vendor/
