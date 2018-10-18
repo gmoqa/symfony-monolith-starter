@@ -27,15 +27,12 @@ class UserFixture extends BaseFixture
         $this->encoder = $encoder;
     }
 
-    /**
-     * @param ObjectManager $manager
-     */
     protected function loadData(ObjectManager $manager)
     {
         $admin = $this->getAdminFixture();
         $manager->persist($admin);
 
-        $this->createMany(10, 'main_users', function () {
+        $this->createMany(10, 'users', function () {
             $user = new User();
             $user
                 ->setEmail($this->faker->safeEmail)
