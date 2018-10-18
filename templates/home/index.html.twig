@@ -1,10 +1,18 @@
 {% extends 'base.html.twig' %}
-{% block title %}home{% endblock %}
 {% block body %}
     <div class="starter-template">
-        <h1>Symfony4 starter</h1>
-        <p class="lead">Use this project as a way to quickly start any new project.<br>
-            You get security, fixtures, cruds and bootstrap.
+        <h1>Symfony4 Monolith Base</h1>
+        {% if app.user %}
+            <h5>Hi! {{ app.user.firstName }}</h5>
+        {% endif %}
+        <p  class="lead">
+            The monoliths sometimes have things in common.
+        </p>
+        <p class="lead">
+            Your project already got security, fixtures, cruds <br>
+            and latest version of Bootstrap (4.1.3)<br><br>
+            Built with latest version of Symfony ({{ symfony_version() }})<br>
+            MIT License
         </p>
     </div>
 {% endblock %}

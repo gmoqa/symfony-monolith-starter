@@ -35,6 +35,11 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      */
+    private $firstLastName;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $password;
 
     public function getId(): ?int
@@ -125,5 +130,22 @@ class User implements UserInterface
         $this->password = $password;
 
         return $this;
+    }
+
+    public function getFirstLastName(): ?string
+    {
+        return $this->firstLastName;
+    }
+
+    public function setFirstLastName(string $firstLastName): self
+    {
+        $this->firstLastName = $firstLastName;
+
+        return $this;
+    }
+
+    public function getFullName(): string
+    {
+        return $this->firstName." ".$this->getFirstLastName();
     }
 }

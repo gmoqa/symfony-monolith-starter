@@ -9,6 +9,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 /**
  * Class SecurityController
  * @package App\Controller
+ * @author Guillermo Quinteros A. <gu.quinteros@gmail.com>
  */
 class SecurityController extends AbstractController
 {

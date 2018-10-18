@@ -9,6 +9,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 /**
  * Class UserFixture
  * @package App\DataFixtures
+ * @author Guillermo Quinteros A. <gu.quinteros@gmail.com>
  */
 class UserFixture extends BaseFixture
 {
@@ -31,11 +32,17 @@ class UserFixture extends BaseFixture
      */
     protected function loadData(ObjectManager $manager)
     {
-        $this->createMany(10, 'main_users', function (int $i) {
+        $admin = $this->getAdminFixture();
+        $manager->persist($admin);
+
+        $this->createMany(10, 'main_users', function () {
             $user = new User();
-            $user->setEmail($this->faker->safeEmail);
-            $user->setFirstName($this->faker->name);
-            $user->setPassword($this->encoder->encodePassword(
+            $user
+                ->setEmail($this->faker->safeEmail)
+                ->setFirstName($this->faker->firstNameMale)
+                ->setFirstLastName($this->faker->lastName)
+                ->setRoles(['ROLE_USER'])
+                ->setPassword($this->encoder->encodePassword(
                 $user,
                 '123pass'
             ));
@@ -43,5 +50,25 @@ class UserFixture extends BaseFixture
         });
 
         $manager->flush();
+    }
+
+    /**
+     * @return User
+     */
+    private function getAdminFixture()
+    {
+        $admin = new User();
+        $admin
+            ->setFirstName('Guillermo')
+            ->setFirstLastName('Quinteros')
+            ->setPassword($this->encoder->encodePassword(
+                $admin,
+                '123pass'
+            ))
+            ->setEmail('gu.quinteros@gmail.com')
+            ->setRoles(['ROLE_ADMIN'])
+        ;
+
+        return $admin;
     }
 }
