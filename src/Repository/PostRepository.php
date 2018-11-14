@@ -19,4 +19,11 @@ class PostRepository extends AbstractRepository
     {
         parent::__construct($registry, Post::class);
     }
+
+    public function test()
+    {
+        $this->createQueryBuilder()
+        ->getQuery()
+        ->getRe;
+    }
 }

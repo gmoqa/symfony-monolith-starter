@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Post;
 use App\Form\PostType;
 use App\Repository\PostRepository;
+use App\Services\Pdf;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -136,5 +137,14 @@ class PostController extends AbstractController
         }
 
         return $this->redirectToRoute('post_index');
+    }
+
+    /**
+     * @param PdfExporterInterface $pdfExporter
+     */
+    public function printPost(PdfExporterInterface $pdfExporter)
+    {
+        $pdfFile = $pdfExporter->create();
+
     }
 }
